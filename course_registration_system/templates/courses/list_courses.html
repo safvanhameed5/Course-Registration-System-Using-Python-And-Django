@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Dashboard</title>
+    <link rel="stylesheet" href="{% static 'courses/list_courses.css' %}">
+</head>
+<body> 
+  <h1 class="title" style="color: #4b0082">Course List</h1>
+<div class="main">
+{% for course in courses %}
+<div class="main-course">
+      <h1>{{ course.id }}.{{ course.title }}</h1>
+      <p>{{ course.description }}</p>
+      <p><strong>Capacity : </strong> {{ course.maximum_capacity }}</p>
+      <p><strong>Current Admissions : </strong>{{ course.current_enrolled }}</p>
+      <form action="/register/{{ course.id }}/" method="get">
+          <button class="btn" type="submit">Register</button>
+      </form>
+    </div>
+{% endfor %}
+</div>
+</body>
+</html>
